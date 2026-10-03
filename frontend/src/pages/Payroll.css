@@ -1,0 +1,283 @@
+/* =====================================================
+   PAYROLL PAGE STYLING (EMPLOYEE PORTAL)
+   Consistent with Leave.css and HRIS design system
+   ===================================================== */
+
+.module-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 36px 40px 60px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.module-page h1 {
+  margin: 0;
+  color: #182238;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.module-page > p {
+  margin: 8px 0 28px;
+  color: #69758d;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   SECTIONS
+   ===================================================== */
+
+.module-page section {
+  margin-bottom: 36px;
+}
+
+.module-page section h2 {
+  color: #182238;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 750;
+  margin: 0 0 18px;
+}
+
+/* =====================================================
+   PAYROLL SUMMARY METRICS GRID (4 PRIMARY CARDS)
+   ===================================================== */
+
+.payroll-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.payroll-summary > div,
+.payroll-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+  background: #ffffff;
+  border: 1px solid #e4e8f0;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(25, 39, 70, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.payroll-summary > div:hover,
+.payroll-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(25, 39, 70, 0.08);
+}
+
+.payroll-summary > div strong,
+.payroll-card strong {
+  color: #66738b;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.payroll-summary > div span,
+.payroll-card span {
+  color: #182238;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Monthly Gross Salary */
+.payroll-card.gross-card {
+  border-left: 4px solid #2563eb;
+}
+
+/* Total Deductions */
+.payroll-card.deductions-card {
+  border-left: 4px solid #dc2626;
+}
+
+.payroll-card.deductions-card span {
+  color: #b91c1c;
+}
+
+/* Net Salary Highlight */
+.payroll-card.net-card {
+  background: linear-gradient(135deg, #059669, #047857);
+  border-color: #059669;
+  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.25);
+}
+
+.payroll-card.net-card strong {
+  color: #a7f3d0;
+}
+
+.payroll-card.net-card span {
+  color: #ffffff;
+}
+
+/* Salary Month / Pay Period */
+.payroll-card.period-card {
+  border-left: 4px solid #6366f1;
+}
+
+.payroll-card.period-card span {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+/* =====================================================
+   SALARY BREAKDOWN SECTION
+   ===================================================== */
+
+.breakdown-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.breakdown-card {
+  background: #ffffff;
+  border: 1px solid #e4e8f0;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 24px rgba(25, 39, 70, 0.05);
+}
+
+.breakdown-card h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 750;
+  color: #182238;
+  border-bottom: 1px solid #edf0f5;
+  padding-bottom: 12px;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #4b5563;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.breakdown-row strong {
+  color: #182238;
+  font-weight: 600;
+}
+
+.breakdown-row.breakdown-subtotal {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 2px solid #e5e7eb;
+  border-bottom: none;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.breakdown-row.breakdown-subtotal strong {
+  color: #2563eb;
+  font-size: 16px;
+}
+
+.breakdown-row .text-deduction {
+  color: #dc2626;
+}
+
+.breakdown-row.breakdown-net strong {
+  color: #059669;
+  font-size: 16px;
+}
+
+/* =====================================================
+   PAYROLL DETAILS TABLE
+   ===================================================== */
+
+.module-page table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 1px solid #e4e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(25, 39, 70, 0.05);
+}
+
+.module-page th {
+  padding: 16px 20px;
+  background: #f8f9fc;
+  border-bottom: 1px solid #e9edf3;
+  color: #68758d;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.module-page td {
+  padding: 18px 20px;
+  border-bottom: 1px solid #edf0f5;
+  color: #263149;
+  font-size: 15px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.module-page tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.module-page tbody tr:hover {
+  background: #fbfcfe;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 1024px) {
+  .payroll-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .module-page {
+    padding: 24px 18px 48px;
+  }
+
+  .module-page h1 {
+    font-size: 26px;
+  }
+
+  .breakdown-container {
+    grid-template-columns: 1fr;
+  }
+
+  .module-page table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .payroll-summary {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,34 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+build/
+
+# Local backend test artifacts and uploads
+backend/cookies.txt
+backend/uploads/
+backend/DEMO_CREDENTIALS.md
+DEMO_CREDENTIALS.md
+
+# Local artifacts and editor tooling
+.Rhistory
+.agents/
+.claude/
+.windsurf/

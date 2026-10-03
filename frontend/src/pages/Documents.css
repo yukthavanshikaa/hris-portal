@@ -1,0 +1,321 @@
+/* =====================================================
+   DOCUMENTS PAGE STYLING (EMPLOYEE PORTAL)
+   Consistent with Leave.css and HRIS design system
+   ===================================================== */
+
+.page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 36px 40px 60px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #182238;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  margin: 8px 0 0;
+  color: #69758d;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   ALERT NOTIFICATIONS
+   ===================================================== */
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #047857;
+}
+
+/* =====================================================
+   CARDS
+   ===================================================== */
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e4e8f0;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(25, 39, 70, 0.05);
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  color: #182238;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+
+.section-description {
+  margin: 0 0 22px;
+  color: #758198;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   UPLOAD FORM
+   ===================================================== */
+
+.card form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  color: #354159;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-group select {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #d8deea;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #182238;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-group select:focus {
+  border-color: #2864e8;
+  box-shadow: 0 0 0 3px rgba(40, 100, 232, 0.1);
+}
+
+.form-group input[type="file"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px dashed #d8deea;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-group input[type="file"]:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.form-group input[type="file"]:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.selected-file {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 13px;
+  width: fit-content;
+}
+
+.card form button[type="submit"] {
+  align-self: flex-start;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 24px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.card form button[type="submit"]:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+.card form button[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.card form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =====================================================
+   DOCUMENT TABLE
+   ===================================================== */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e4e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.table-container table {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+}
+
+.table-container th {
+  padding: 15px 18px;
+  background: #f8f9fc;
+  border-bottom: 1px solid #e9edf3;
+  color: #68758d;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.table-container td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #edf0f5;
+  color: #263149;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.table-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-container tbody tr:hover {
+  background: #fbfcfe;
+}
+
+/* =====================================================
+   STATUS BADGES
+   ===================================================== */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.status-verified {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status-rejected {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* =====================================================
+   EMPTY / LOADING STATES
+   ===================================================== */
+
+.card > p {
+  color: #69758d;
+  font-size: 14px;
+  margin: 12px 0 0;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .page {
+    padding: 24px 18px 48px;
+  }
+
+  .page-header h1 {
+    font-size: 26px;
+  }
+
+  .card {
+    padding: 20px 16px;
+  }
+
+  .card form {
+    max-width: 100%;
+  }
+
+  .card form button[type="submit"] {
+    width: 100%;
+  }
+}

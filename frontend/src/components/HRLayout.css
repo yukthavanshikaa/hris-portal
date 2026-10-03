@@ -1,0 +1,17 @@
+.hr-layout {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+.hr-layout-content {
+  min-height: 100vh;
+  margin-left: 245px;
+  background: #f6f8fc;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .hr-layout-content {
+    margin-left: 210px;
+  }
+}

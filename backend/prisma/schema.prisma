@@ -1,0 +1,183 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  EMPLOYEE
+  HR
+  ADMIN
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+  LEAVE
+  HALF_DAY
+}
+
+enum LeaveType {
+  CASUAL
+  SICK
+  EARNED
+  OTHER
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum DocumentType {
+  AADHAAR
+  PAN
+  DEGREE
+  ADDRESS_PROOF
+  OTHER
+}
+
+enum DocumentStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  passwordHash String
+  role         Role       @default(EMPLOYEE)
+  employee     Employee?
+
+  reviewedLeaves LeaveRequest[] @relation("LeaveReviewer")
+  verifiedDocuments Document[]  @relation("DocumentVerifier")
+
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Employee {
+  id             String       @id @default(uuid())
+  employeeCode   String       @unique
+  firstName      String
+  lastName       String
+  email          String       @unique
+  phone          String?
+  department     String
+  designation    String
+  dateOfJoining  DateTime
+
+  userId         String       @unique
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  managerId      String?
+  manager        Employee?    @relation("EmployeeHierarchy", fields: [managerId], references: [id], onDelete: SetNull)
+  directReports  Employee[]   @relation("EmployeeHierarchy")
+
+  attendance     Attendance[]
+  leaveBalance   LeaveBalance?
+  leaveRequests  LeaveRequest[]
+  payroll        Payroll[]
+  documents      Document[]
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Attendance {
+  id          String           @id @default(uuid())
+  employeeId  String
+  date        DateTime
+  checkIn     DateTime?
+  checkOut    DateTime?
+  status      AttendanceStatus @default(PRESENT)
+
+  employee    Employee         @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@unique([employeeId, date])
+}
+
+model LeaveBalance {
+  id           String   @id @default(uuid())
+  employeeId   String   @unique
+  year         Int
+
+  casualLeave  Float    @default(12)
+  sickLeave    Float    @default(12)
+  earnedLeave  Float    @default(15)
+
+  employee     Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([employeeId, year])
+}
+
+model LeaveRequest {
+  id          String      @id @default(uuid())
+  employeeId  String
+  type        LeaveType
+  startDate   DateTime
+  endDate     DateTime
+  reason      String
+  status      LeaveStatus @default(PENDING)
+
+  reviewedById String?
+  reviewedBy   User?       @relation("LeaveReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  reviewedAt   DateTime?
+
+  employee    Employee    @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Payroll {
+  id           String   @id @default(uuid())
+  employeeId   String
+  month        Int
+  year         Int
+
+  basicSalary  Decimal  @db.Decimal(12, 2)
+  hra          Decimal  @db.Decimal(12, 2)
+  allowances   Decimal  @db.Decimal(12, 2)
+  deductions   Decimal  @db.Decimal(12, 2)
+  grossSalary  Decimal  @db.Decimal(12, 2)
+  netSalary    Decimal  @db.Decimal(12, 2)
+
+  payslipUrl   String?
+
+  employee     Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([employeeId, month, year])
+}
+
+model Document {
+  id             String         @id @default(uuid())
+  employeeId     String
+  type           DocumentType
+  fileUrl        String
+  status         DocumentStatus @default(PENDING)
+  rejectionReason String?
+
+  verifiedById   String?
+  verifiedBy     User?          @relation("DocumentVerifier", fields: [verifiedById], references: [id], onDelete: SetNull)
+  verifiedAt     DateTime?
+
+  employee       Employee       @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
