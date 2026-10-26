@@ -10,6 +10,7 @@ services:
     rootDir: backend
     buildCommand: npm install && npx prisma generate
     startCommand: node server.js
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
@@ -24,7 +25,7 @@ services:
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
       - key: SUPABASE_STORAGE_BUCKET
-        value: employee-documents
+        value: documents
       - key: FRONTEND_URL
         sync: false
 
